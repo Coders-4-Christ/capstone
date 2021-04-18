@@ -161,6 +161,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AppControlTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Controllers\PeopleSkillsController.cs" />
@@ -171,6 +172,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AppControlTypes.cs" />
+    <Compile Include="Models\AppDetailFields.cs" />
+    <Compile Include="Models\AppDetails.cs" />
+    <Compile Include="Models\AppEntities.cs" />
+    <Compile Include="Models\AppEntityFields.cs" />
+    <Compile Include="Models\AppSelectionListFields.cs" />
+    <Compile Include="Models\AppSelectionLists.cs" />
+    <Compile Include="Models\AppWrappers.cs" />
     <Compile Include="Models\People.cs" />
     <Compile Include="Models\PeopleSkills.cs" />
     <Compile Include="Models\Skills.cs" />
