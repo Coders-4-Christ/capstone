@@ -17,6 +17,10 @@ import { SharedService } from './shared.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UsersComponent } from './users/users.component';
+import { AddEditUsersComponent } from './users/add-edit-users/add-edit-users.component';
+import { ShowUsersComponent } from './users/show-users/show-users.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AddEditSkillsComponent,
     TasksComponent,
     ShowTasksComponent,
-    AddEditTasksComponent
+    AddEditTasksComponent,
+    UsersComponent,
+    AddEditUsersComponent,
+    ShowUsersComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,27 @@
-<p>add-edit-tasks works!</p>
+<div class="form-froup row">
+
+    <label class="col-sm-2 col-form-label">Task</label>
+    <div class="col-sm-10">
+        <input type="text" class="form-control" [(ngModel)]="Task" placeholder="Enter Task">
+    </div>
+    <label class="col-sm-2 col-form-label">Priority</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="Priority" placeholder="Enter Priority">
+    </div>
+    <label class="col-sm-2 col-form-label">EstimatedCost</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="EstimatedCost" placeholder="Enter Estimated Cost">
+    </div>
+    <label class="col-sm-2 col-form-label">AssignedToPersonID</label>
+    <div class="col-sm-10">
+        <input type="number" class="form-control" [(ngModel)]="AssignedToPersonID" placeholder="Assign To Person ID">
+    </div>
+</div>
+
+<button (click)="addTasks()" *ngIf="tasks.TaskID==0" class="btn btn-primary">
+    Add
+</button>
+
+<button (click)="updateTasks()" *ngIf="tasks.TaskID!=0" class="btn btn-primary">
+    Update
+</button>

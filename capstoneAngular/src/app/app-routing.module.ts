@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {PeopleComponent} from './people/people.component';
 import {SkillsComponent} from './skills/skills.component';
 import {TasksComponent} from './tasks/tasks.component';
+import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
 {path:'people',component:PeopleComponent},
 {path:'skills',component:SkillsComponent},
-{path:'tasks',component:TasksComponent}
+{path:'tasks',component:TasksComponent},
+{path: 'users',component:UsersComponent}
 
 ];
 

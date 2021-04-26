@@ -1,6 +1,6 @@
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">
-    Add Skill
+    Add User
   </button>
 
 <!-- Modal -->
@@ -14,8 +14,8 @@
           </button>
             </div>
             <div class="modal-body">
-                <app-add-edit-skills [skills]="skills" *ngIf="ActivateAddEditSkillComp">
-                </app-add-edit-skills>
+                <app-add-edit-users [user]="user" *ngIf="ActivateAddEditUsersComp">
+                </app-add-edit-users>
             </div>
         </div>
     </div>
@@ -27,45 +27,63 @@
         <tr>
             <th>
                 <div class="d-flex flex-row">
-                    <input [(ngModel)]="SkillsIDFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+                    <input [(ngModel)]="UserIDFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
-                    <button type="button" class="btn btn-light" (click)="sortResult('SkillID',true)">
+                    <button type="button" class="btn btn-light" (click)="sortResult('UserID',true)">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
                       </svg>
                       </button>
-                    <button type="button" class="btn btn-light" (click)="sortResult('SkillID',false)">
+                    <button type="button" class="btn btn-light" (click)="sortResult('UserID',false)">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
                         </svg>
                       </button>
                 </div>
 
-                SkillID</th>
+                UserID</th>
             <th>
                 <div class="d-flex flex-row">
-                    <input [(ngModel)]="SkillFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+                    <input [(ngModel)]="FirstNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
-                    <button type="button" class="btn btn-light" (click)="sortResult('Skill',true)">
+                    <button type="button" class="btn btn-light" (click)="sortResult('FirstName',true)">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
                       </svg>
                       </button>
-                    <button type="button" class="btn btn-light" (click)="sortResult('Skill',false)">
+                    <button type="button" class="btn btn-light" (click)="sortResult('FirstName',false)">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
                         </svg>
                       </button>
                 </div>
 
-                Skill</th>
+                FirstName</th>
+            <th>
+                <div class="d-flex flex-row">
+                    <input [(ngModel)]="LastNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+
+                    <button type="button" class="btn btn-light" (click)="sortResult('LastName',true)">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
+                      </svg>
+                      </button>
+                    <button type="button" class="btn btn-light" (click)="sortResult('LastName',false)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z"/>
+                        </svg>
+                      </button>
+                </div>
+
+                LastName</th>
             <th>Options</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let dataItem of SkillsList">
-            <td>{{dataItem.SkillID}}</td>
-            <td>{{dataItem.Skill}}</td>
+        <tr *ngFor="let dataItem of UserList">
+            <td>{{dataItem.UserID}}</td>
+            <td>{{dataItem.FirstName}}</td>
+            <td>{{dataItem.LastName}}</td>
             <td>
                 <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
