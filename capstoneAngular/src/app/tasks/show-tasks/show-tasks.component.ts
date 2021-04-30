@@ -1,6 +1,7 @@
+/* import proper dependencies */
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
-
+/* connect proper html and css forms*/
 @Component({
   selector: 'app-show-tasks',
   templateUrl: './show-tasks.component.html',
@@ -9,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 export class ShowTasksComponent implements OnInit {
 
   constructor(private service:SharedService) { }
-
+/* create array of tasks and possible functions */
   TasksList:any=[];
 
   ModalTitle:string;
@@ -26,7 +27,7 @@ export class ShowTasksComponent implements OnInit {
   ngOnInit(): void {
     this.refreshTaskList();
   }
-
+/* create functionality using Click function */
   addClick(){
     this.tasks={
       TaskID:0,
@@ -49,7 +50,7 @@ export class ShowTasksComponent implements OnInit {
     this.ActivateAddEditTaskComp=false;
     this.refreshTaskList();
   }
-
+/* utilize error checking to increase UX */
   deleteClick(item){
     if(confirm('Are you sure you want to delete this?')){
       this.service.deleteTasks(item.TaskID).subscribe(data=>{
@@ -58,14 +59,14 @@ export class ShowTasksComponent implements OnInit {
       });
     }
   }
-
+/* refresh data list assigned to taskslists */
   refreshTaskList(){
     this.service.getTasksList().subscribe(data=>{
       this.TasksList=data;
       this.TasksListWithoutFilter=data;
     });
   }
-
+/* make filter functionality */
   FilterFn(){
     var TaskIDFilter = this.TaskIDFilter;
     var TaskFilter = this.TaskFilter;
