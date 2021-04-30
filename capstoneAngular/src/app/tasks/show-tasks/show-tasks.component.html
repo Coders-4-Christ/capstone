@@ -9,6 +9,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+              <!-- Modal Functionality -->
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -27,6 +28,7 @@
         <tr>
             <th>
                 <div class="d-flex flex-row">
+                  <!-- use ng package to create input form control -->
                     <input [(ngModel)]="TaskIDFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
                     <button type="button" class="btn btn-light" (click)="sortResult('TaskID',true)">
@@ -44,6 +46,7 @@
                 TaskID</th>
             <th>
                 <div class="d-flex flex-row">
+                                    <!-- use ng package to create second input form control -->
                     <input [(ngModel)]="TaskFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
                     <button type="button" class="btn btn-light" (click)="sortResult('Task',true)">
@@ -79,6 +82,7 @@
 
             <th>
                 <div class="d-flex flex-row">
+                                    <!-- use ng package to create third input form control -->
                     <input [(ngModel)]="EstimatedCostFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
                     <button type="button" class="btn btn-light" (click)="sortResult('EstimatedCost',true)">
@@ -116,6 +120,7 @@
         </tr>
     </thead>
     <tbody>
+        <!-- create array of data items for the table -->
         <tr *ngFor="let dataItem of TasksList">
             <td>{{dataItem.TaskID}}</td>
             <td>{{dataItem.Task}}</td>
