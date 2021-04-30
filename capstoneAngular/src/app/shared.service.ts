@@ -73,4 +73,12 @@ export class SharedService {
   deleteUsers(val:any){
     return this.http.delete(this.APIUrl+'/Users/'+ val);
   }
+
+  getPeopleSkillsList(val:any){
+    return this.http.get(this.APIUrl+'/PeopleSkills/'+ val)
+  }
+
+  getTaskSkillsList(val:any){
+    return this.http.get(this.APIUrl+'/TasksSkills/'+ val)
+  }
 }

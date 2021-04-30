@@ -1,29 +1,17 @@
-<div class="container">
-
-    <h3 class="d-flex justify-content-center">Christian Aid Missions</h3>
-    <h5 class="d-flex justify-content-center">Database Management Portal</h5>
-
-    <nav class="navbar navbar-expand-sm bg-light navbar-dark">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <button routerLink="people" class="m-1 btn btn-light btn-outline-primary" Buton>People</button>
-            </li>
-
-            <li class="nav-item">
-                <button routerLink="tasks" class="m-1 btn btn-light btn-outline-primary" Buton>Tasks</button>
-            </li>
-
-            <li class="nav-item">
-                <button routerLink="skills" class="m-1 btn btn-light btn-outline-primary" Buton>Skills</button>
-            </li>
-
-            <li class="nav-item">
-                <button routerLink="users" class="m-1 btn btn-light btn-outline-primary" Buton>Users</button>
-            </li>
-        </ul>
-
-    </nav>
-
-    <router-outlet></router-outlet>
-
+<div class="bg-darkgrey d-flex" id="wrapper">
+    <div class="bg-darkgray border-right text-white" id="sidebar-wrapper">
+        <div class="sidebar-heading">Christian Aid Management Portal </div>
+        <div class="list-group list-group-flush bg-darkgray">
+            <button routerLink="people" class="list-group-item list-group-item-action bg-darkblue">People</button>
+            <button routerLink="tasks" class="list-group-item list-group-item-action bg-darkblue">Tasks</button>
+            <button routerLink="skills" class="list-group-item list-group-item-action bg-darkblue">Skills</button>
+            <button routerLink="users" class=" bg-darkblue list-group-item list-group-item-action">Users</button>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 </div>

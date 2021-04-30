@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
+import { ViewSkillsComponent } from '../view-skills/view-skills.component';
 
 @Component({
   selector: 'app-show-people',
@@ -11,14 +12,20 @@ export class ShowPeopleComponent implements OnInit {
   constructor(private service:SharedService) { }
 
   PeopleList:any=[];
+  SkillList:any=[];
+  TaskList:any=[];
 
   ModalTitle:string;
   ActivateAddEditPeopleComp:boolean=false;
+  ActivateViewSkillsComp:boolean=false;
+  ThePersonID:0;
   people:any;
 
   PersonIDFilter:string="";
   NameFilter:string="";
   BirthdayFilter:string="";
+  SkillFilter:string="";
+  TaskFilter:string="";
   PeopleListWithoutFilter:any=[];
 
   ngOnInit(): void {
@@ -29,7 +36,9 @@ export class ShowPeopleComponent implements OnInit {
     this.people={
       PersonID:0,
       Name:"",
-      Birthday:""
+      Birthday:"",
+      Skill:"",
+      Task:""
     }
     this.ModalTitle="Add Person";
     this.ActivateAddEditPeopleComp=true;
@@ -41,8 +50,17 @@ export class ShowPeopleComponent implements OnInit {
     this.ActivateAddEditPeopleComp=true;
   }
 
+  viewClick(item){
+    this.refreshSkillList(item);
+    this.refreshTaskList(item);
+    this.ThePersonID=item;
+    this.ModalTitle="View Tasks and Skills";
+    this.ActivateViewSkillsComp=true;
+  }
+
   closeClick(){
     this.ActivateAddEditPeopleComp=false;
+    this.ActivateViewSkillsComp=false;
     this.refreshPeopleList();
   }
 
@@ -55,6 +73,18 @@ export class ShowPeopleComponent implements OnInit {
     }
   }
 
+refreshSkillList(item){
+  this.service.getPeopleSkillsList(item).subscribe(data=>{
+    this.SkillList=data;
+  });
+}
+
+refreshTaskList(item){
+  this.service.getTaskSkillsList(item).subscribe(data=>{
+    this.TaskList=data;
+  });
+}
+
   refreshPeopleList(){
     this.service.getPeopleList().subscribe(data=>{
       this.PeopleList=data;
@@ -66,6 +96,8 @@ export class ShowPeopleComponent implements OnInit {
     var PersonIDFilter = this.PersonIDFilter;
     var NameFilter = this.NameFilter;
     var BirthdayFilter = this.BirthdayFilter;
+    var SkillFilter = this.SkillFilter;
+    var TaskFilter = this.TaskFilter;
 
     this.PeopleList = this.PeopleListWithoutFilter.filter(function (el){
       return el.PersonID.toString().toLowerCase().includes(
@@ -76,6 +108,12 @@ export class ShowPeopleComponent implements OnInit {
       )&&
       el.Birthday.toString().toLowerCase().includes(
         BirthdayFilter.toString().trim().toLowerCase()
+      )&&
+      el.Skill.toString().toLowerCase().includes(
+        SkillFilter.toString().trim().toLowerCase()
+      )&&
+      el.Task.toString().toLowerCase().includes(
+        TaskFilter.toString().trim().toLowerCase()
       )
     });
   }
@@ -91,3 +129,4 @@ export class ShowPeopleComponent implements OnInit {
   }
 
 }
+

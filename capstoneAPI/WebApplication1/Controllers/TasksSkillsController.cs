@@ -13,11 +13,15 @@ namespace WebApplication1.Controllers
 {
     public class TasksSkillsController : ApiController
     {
-        public HttpResponseMessage Get()
+        public HttpResponseMessage Get(int id)
         {
             string query = @"
-                   select TaskSkillID, TaskID, SkillID
-                   from dbo.TasksSkills
+				SELECT
+	                Tasks.Task
+	            FROM TasksSkills 
+				JOIN Tasks ON Tasks.TaskID=TasksSkills.TaskID
+				JOIN PeopleSkills ON PeopleSkills.SkillID=TasksSkills.SkillID
+				WHERE PeopleSkills.PersonID='" + id + @"'
                    ";
             DataTable table = new DataTable();
             using (var con = new SqlConnection(ConfigurationManager.

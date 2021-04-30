@@ -1,0 +1,26 @@
+<div class="form-froup row">
+    <div class="col-sm-10">
+        <table class="table table-fit">
+            <thead>
+                <tr>
+                    <th scope="col">Skills</th>
+                    <th scope="col">Tasks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <tr *ngFor="let dataItem of SkillList">
+                            <td>{{dataItem.Skill}}</td>
+                        </tr>
+                    </td>
+                    <td>
+                        <tr *ngFor="let dataItem of TaskList">
+                            <td>{{dataItem.Task}}</td>
+                        </tr>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

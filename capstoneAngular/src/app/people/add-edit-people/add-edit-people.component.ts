@@ -15,11 +15,15 @@ export class AddEditPeopleComponent implements OnInit {
   PersonID:string;
   Name:string;
   Birthday:string;
+  Skill:string;
+  Task:string;
 
   ngOnInit(): void {
     this.PersonID=this.people.PersonID;
     this.Name=this.people.Name;
     this.Birthday=this.people.Birthday;
+    this.Skill=this.people.Skill;
+    this.Task=this.people.Task;
   }
 
   addPeople(){
@@ -34,7 +38,8 @@ export class AddEditPeopleComponent implements OnInit {
   updatePeople(){
     var val = {PersonID:this.PersonID,
       Name:this.Name,
-      Birthday:this.Birthday};
+      Birthday:this.Birthday
+      };
     this.service.updatePeople(val).subscribe(res=>{
     alert(res.toString());
     });

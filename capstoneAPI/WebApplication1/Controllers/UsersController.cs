@@ -11,17 +11,13 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class PeopleSkillsController : ApiController
+    public class UsersController : ApiController
     {
-        public HttpResponseMessage Get(int id)
+        public HttpResponseMessage Get()
         {
             string query = @"
-                SELECT
-	                Skills.Skill
-	            FROM PeopleSkills 
-                JOIN People ON People.PersonID=PeopleSkills.PersonID 
-                JOIN Skills ON Skills.SkillID=PeopleSkills.SkillID
-                WHERE People.PersonID='" + id + @"'
+                   select UserID, FirstName, LastName, UserName, Passphrase 
+                   from dbo.Users
                    ";
             DataTable table = new DataTable();
             using (var con = new SqlConnection(ConfigurationManager.
@@ -36,15 +32,17 @@ namespace WebApplication1.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, table);
         }
 
-        public string Post(PeopleSkills ps)
+        public string Post(Users u)
         {
             try
             {
                 string query = @"
-                       insert into dbo.PeopleSkills values
+                       insert into dbo.Tasks values
                        (
-                       '" + ps.PersonID + @"'
-                       ,'" + ps.SkillID + @"'
+                       '" + u.FirstName + @"'
+                       ,'" + u.LastName + @"'
+                       ,'" + u.UserName + @"'
+                       ,'" + u.Passphrase + @"'
                        )
                        ";
                 DataTable table = new DataTable();
@@ -65,15 +63,17 @@ namespace WebApplication1.Controllers
             }
         }
 
-        public string Put(PeopleSkills ps)
+        public string Put(Users u)
         {
             try
             {
                 string query = @"
-                       update dbo.PeopleSkills set
-                       PersonID='" + ps.PersonID + @"'
-                       ,SkillID='" + ps.SkillID + @"'
-                       where PersonSkillID=" + ps.PersonSkillID + @"
+                       update dbo.Users set
+                       FirstName='" + u.FirstName + @"'
+                       ,LastName='" + u.LastName + @"'
+                       ,UserName='" + u.UserName + @"'
+                       ,Passphrase='" + u.Passphrase + @"'
+                       where TaskID=" + u.UserID + @"
                        ";
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.
@@ -98,8 +98,8 @@ namespace WebApplication1.Controllers
             try
             {
                 string query = @"
-                       delete from dbo.PeopleSkills
-                       where PersonSkillID=" + id + @"
+                       delete from dbo.Users
+                       where UserID=" + id + @"
                        ";
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.

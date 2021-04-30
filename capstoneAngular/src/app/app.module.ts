@@ -21,6 +21,7 @@ import { UsersComponent } from './users/users.component';
 import { AddEditUsersComponent } from './users/add-edit-users/add-edit-users.component';
 import { ShowUsersComponent } from './users/show-users/show-users.component';
 import { LoginComponent } from './login/login.component';
+import { ViewSkillsComponent } from './people/view-skills/view-skills.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LoginComponent } from './login/login.component';
     UsersComponent,
     AddEditUsersComponent,
     ShowUsersComponent,
-    LoginComponent
+    LoginComponent,
+    ViewSkillsComponent
   ],
   imports: [
     BrowserModule,
