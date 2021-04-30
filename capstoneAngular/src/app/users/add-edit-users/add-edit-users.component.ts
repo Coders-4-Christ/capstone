@@ -1,3 +1,4 @@
+/**import statements*/
 import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
@@ -10,13 +11,15 @@ export class AddEditUsersComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
+  /**creates user object*/
   @Input() user:any;
   UserID:string;
   FirstName:string;
   LastName:string;
   UserName:string;
   Passphrase:string;
-
+  
+  /**creates user instance*/
   ngOnInit(): void {
     this.UserID=this.user.UserID;
     this.FirstName=this.user.FirstName;
@@ -24,7 +27,7 @@ export class AddEditUsersComponent implements OnInit {
     this.UserName=this.user.UserName;
     this.Passphrase=this.user.Passphrase;
   }
-
+  /**adds user*/
   addUsers(){
     var val = {UserID:this.UserID,
                 FirstName:this.FirstName,
@@ -35,7 +38,7 @@ export class AddEditUsersComponent implements OnInit {
       alert(res.toString());
     });
   }
-
+  /**updates user*/
   updateUsers(){
     var val = {UserID:this.UserID,
       FirstName:this.FirstName,
