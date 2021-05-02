@@ -13,7 +13,6 @@ import { TasksComponent } from './tasks/tasks.component';
 import { ShowTasksComponent } from './tasks/show-tasks/show-tasks.component';
 import { AddEditTasksComponent } from './tasks/add-edit-tasks/add-edit-tasks.component';
 import { SharedService } from './shared.service';
-
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
