@@ -1,27 +1,33 @@
 <div class="form-froup row">
 
+    <!--Text field that takes user input and binds it to the Task model-->
     <label class="col-sm-2 col-form-label">Task</label>
     <div class="col-sm-10">
         <input type="text" class="form-control" [(ngModel)]="Task" placeholder="Enter Task">
     </div>
+    <!--Text field that takes user input and binds it to the Priority model-->
     <label class="col-sm-2 col-form-label">Priority</label>
     <div class="col-sm-10">
         <input type="number" class="form-control" [(ngModel)]="Priority" placeholder="Enter Priority">
     </div>
+    <!--Text field that takes user input and binds it to the EstimatedCost model-->
     <label class="col-sm-2 col-form-label">EstimatedCost</label>
     <div class="col-sm-10">
         <input type="number" class="form-control" [(ngModel)]="EstimatedCost" placeholder="Enter Estimated Cost">
     </div>
+    <!--Text field that takes user input and binds it to the AssignedToPersonID model-->
     <label class="col-sm-2 col-form-label">AssignedToPersonID</label>
     <div class="col-sm-10">
         <input type="number" class="form-control" [(ngModel)]="AssignedToPersonID" placeholder="Assign To Person ID">
     </div>
 </div>
 
+<!--Takes data from the above form and sends it trough the addTasks function. this button appears if there is no task ID associated with the modal window popup-->
 <button (click)="addTasks()" *ngIf="tasks.TaskID==0" class="btn btn-primary">
     Add
 </button>
 
+<!--Takes data from the above form and sends it trough the updateTasks function. this button appears if there is a task ID associated with the modal window popup-->
 <button (click)="updateTasks()" *ngIf="tasks.TaskID!=0" class="btn btn-primary">
     Update
 </button>

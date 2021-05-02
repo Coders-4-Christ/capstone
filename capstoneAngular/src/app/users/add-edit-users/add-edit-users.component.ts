@@ -19,7 +19,7 @@ export class AddEditUsersComponent implements OnInit {
   UserName:string;
   Passphrase:string;
   
-  /**creates user instance*/
+  //creates user instance
   ngOnInit(): void {
     this.UserID=this.user.UserID;
     this.FirstName=this.user.FirstName;
