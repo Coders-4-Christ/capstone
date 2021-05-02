@@ -1,3 +1,4 @@
+/**import statements*/
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/shared.service';
 
@@ -9,7 +10,7 @@ import { SharedService } from 'src/app/shared.service';
 export class ShowUsersComponent implements OnInit {
 
   constructor(private service:SharedService) { }
-
+   /**creates array of users */
   UserList:any=[];
 
   ModalTitle:string;
@@ -24,7 +25,7 @@ export class ShowUsersComponent implements OnInit {
   ngOnInit(): void {
     this.refreshUserList();
   }
-
+   /**click event for adding user */
   addClick(){
     this.user={
       UserID:0,
@@ -36,18 +37,18 @@ export class ShowUsersComponent implements OnInit {
     this.ModalTitle="Add User";
     this.ActivateAddEditUsersComp=true;
   }
-
+  /**click event for editing user */
   editClick(item){
     this.user=item;
     this.ModalTitle="Edit User";
     this.ActivateAddEditUsersComp=true;
   }
-
+  /**click event to close window */
   closeClick(){
     this.ActivateAddEditUsersComp=false;
     this.refreshUserList();
   }
-
+  /**deletes user */
   deleteClick(item){
     if(confirm('Are you sure you want to delete this?')){
       this.service.deleteUsers(item.UserID).subscribe(data=>{
@@ -56,14 +57,14 @@ export class ShowUsersComponent implements OnInit {
       });
     }
   }
-
+  /**refreshes list of users with updated information */
   refreshUserList(){
     this.service.getUsersList().subscribe(data=>{
       this.UserList=data;
       this.UserListWithoutFilter=data;
     });
   }
-
+  /**toggles filter */
   FilterFn(){
     var UserIDFilter = this.UserIDFilter;
     var FirstNameFilter = this.FirstNameFilter;
@@ -81,7 +82,7 @@ export class ShowUsersComponent implements OnInit {
       )
     });
   }
-
+  /**sorts results list */
   sortResult(prop,asc){
     this.UserList = this.UserListWithoutFilter.sort(function(a,b){
       if(asc){
