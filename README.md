@@ -31,7 +31,7 @@
   
 ### For the Angular Project
   - To view the project code, you will also need visual studio code. to install visual studio code, follow this link (https://code.visualstudio.com/download) and download and install the appropriate version.
-  - Once installed, navigate to the project folder in a command prompt (EX: cd C:\Users\{Username}\Documents\GitHub\capstone\capstoneAngular).
+  - Once installed, navigate to the project folder in a command prompt (EX: cd C:\Users\\{Username}\Documents\GitHub\capstone\capstoneAngular).
   - type "code ." in the command prompt and it will launch visual studio code.
   - In order to run the project, you will need NPM installed on your machine.
   - To install NPM, follow this link (https://nodejs.org/en/).
