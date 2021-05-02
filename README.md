@@ -24,7 +24,7 @@
   - Navigate to the "appsettings.json" file
   - Where it says Data Source=".;" change the "." to the connection you used to connect to the database in SSMS.
   - Save the project.
-  - open command line and navigate to the project folder (EX: cd C:\Users\{Username}\Documents\GitHub\capstone\CapstoneAPI2\CapstoneAPI2).
+  - open command line and navigate to the project folder (EX: cd C:\\Users\{Username}\Documents\GitHub\capstone\CapstoneAPI2\CapstoneAPI2).
   - next in command prompt/terminal type "dotnet run" to start the API.
   - Alternatively, click the run button inside Visual Studio 2019 to run the project.
   - A new tab will appear in your default browser, but this can be ignored.
@@ -37,7 +37,7 @@
   - To install NPM, follow this link (https://nodejs.org/en/).
   - Download the recommended version.
   - Double click the installer and follow the instructions.
-  - Open a command line and navigate to the project folder (EX: cd C:\Users\{Username}\Documents\GitHub\capstone\capstoneAngular).
+  - Open a command line and navigate to the project folder (EX: cd C:\Users\\{Username}\Documents\GitHub\capstone\capstoneAngular).
   - in the command prompt type "npm update" to update the packages necessary.
   - to run the project in your browser, in that same command prompt type "ng s --o" (or ng serve --open).
   - This will open a tab in your default browser displaying the project.
