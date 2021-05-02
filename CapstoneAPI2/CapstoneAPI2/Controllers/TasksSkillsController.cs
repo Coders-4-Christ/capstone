@@ -26,12 +26,9 @@ namespace CapstoneAPI2.Controllers
         public JsonResult Get(int id)
         {
             string query = @"
-				SELECT
-	                Tasks.Task
-	            FROM TasksSkills 
-				JOIN Tasks ON Tasks.TaskID=TasksSkills.TaskID
-				JOIN PeopleSkills ON PeopleSkills.SkillID=TasksSkills.SkillID
-				WHERE PeopleSkills.PersonID='" + id + @"'
+				SELECT Task
+				FROM Tasks
+				WHERE AssignedToPersonID='" + id + @"'
                    ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LUCapstoneDB");
@@ -87,10 +84,9 @@ namespace CapstoneAPI2.Controllers
         public JsonResult Put(TasksSkills ts)
         {
             string query = @"
-                       update dbo.TasksSkills set
-                       TaskID='" + ts.TaskID + @"'
-                       ,SkillID='" + ts.SkillID + @"'
-                       where TaskSkillID=" + ts.TaskSkillID + @"
+                       update dbo.Tasks set
+                       AssignedToPersonID='" + ts.PersonID + @"'
+                       where Task='" + ts.Task + @"'
                        ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LUCapstoneDB");

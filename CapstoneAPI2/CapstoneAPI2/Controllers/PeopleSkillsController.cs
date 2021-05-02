@@ -27,6 +27,8 @@ namespace CapstoneAPI2.Controllers
         {
             string query = @"
                 SELECT
+                    PeopleSkills.PersonSkillID,
+                    PeopleSkills.PersonID,
 	                Skills.Skill
 	            FROM PeopleSkills 
                 JOIN People ON People.PersonID=PeopleSkills.PersonID 
@@ -59,10 +61,10 @@ namespace CapstoneAPI2.Controllers
             string query = @"
                        insert into dbo.PeopleSkills values
                        (
-                       '" + ps.PersonID + @"'
-                       ,'" + ps.SkillID + @"'
+						'" + ps.PersonID + @"'
+						,'" + ps.SkillID+ @"'
                        )
-                       ";
+                        ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LUCapstoneDB");
             SqlDataReader myReader;
@@ -117,7 +119,7 @@ namespace CapstoneAPI2.Controllers
         {
             string query = @"
                        delete from dbo.PeopleSkills
-                       where PersonSkillID=" + id + @"
+                        where PersonSkillID =" + id + @"
                        ";
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("LUCapstoneDB");

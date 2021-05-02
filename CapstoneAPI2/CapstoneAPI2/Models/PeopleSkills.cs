@@ -10,5 +10,7 @@ namespace CapstoneAPI2.Models
         public int PersonSkillID { get; set; }
         public int PersonID { get; set; }
         public int SkillID { get; set; }
+
+        public string Skill { get; set; }
     }
 }

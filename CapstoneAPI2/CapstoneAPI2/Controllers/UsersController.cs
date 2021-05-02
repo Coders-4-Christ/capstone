@@ -53,7 +53,7 @@ namespace CapstoneAPI2.Controllers
         public JsonResult Post(Users u)
         {
             string query = @"
-                       insert into dbo.Tasks values
+                       insert into dbo.Users values
                        (
                        '" + u.FirstName + @"'
                        ,'" + u.LastName + @"'

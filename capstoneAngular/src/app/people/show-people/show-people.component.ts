@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgModel } from '@angular/forms';
 import {SharedService} from 'src/app/shared.service';
+import { SkillsComponent } from 'src/app/skills/skills.component';
 import { ViewSkillsComponent } from '../view-skills/view-skills.component';
 
 @Component({
@@ -13,23 +15,30 @@ export class ShowPeopleComponent implements OnInit {
 
   PeopleList:any=[];
   SkillList:any=[];
+  SkillDropList:any=[];
   TaskList:any=[];
+  TaskDropList:any=[];
 
   ModalTitle:string;
   ActivateAddEditPeopleComp:boolean=false;
   ActivateViewSkillsComp:boolean=false;
   ThePersonID:0;
+  AssignedToID:0;
   people:any;
+  name:any;
+  skill:any;
+  selectedSkill:any;
+  selectedTask:any;
 
   PersonIDFilter:string="";
   NameFilter:string="";
   BirthdayFilter:string="";
-  SkillFilter:string="";
-  TaskFilter:string="";
   PeopleListWithoutFilter:any=[];
 
   ngOnInit(): void {
     this.refreshPeopleList();
+    this.refreshSkillList();
+    this.refreshTaskList();
   }
 
   addClick(){
@@ -44,17 +53,42 @@ export class ShowPeopleComponent implements OnInit {
     this.ActivateAddEditPeopleComp=true;
   }
 
+  addSkillClick(item){
+    this.ThePersonID=item;
+    var val={
+      PersonID:this.ThePersonID,
+      SkillID:this.selectedSkill
+    };
+    this.service.updatePeopleSkillsList(val).subscribe(data=>{
+      this.SkillList=data;
+    });
+    this.refreshPeopleSkillList(this.ThePersonID);
+  }
+
+  addTaskClick(item){
+    this.AssignedToID=item;
+    var val={
+      PersonID:this.ThePersonID,
+      Task:this.selectedTask
+    }
+    this.service.updatePeopleTasksList(val).subscribe(data=>{
+      this.TaskList=data;
+    });
+    this.refreshPeopleTasksList(this.AssignedToID)
+  }
+
   editClick(item){
     this.people=item;
-    this.ModalTitle="Edit Person";
+    this.ModalTitle="Edit " + this.people.Name;
     this.ActivateAddEditPeopleComp=true;
   }
 
-  viewClick(item){
-    this.refreshSkillList(item);
-    this.refreshTaskList(item);
+  viewClick(item, name){
     this.ThePersonID=item;
-    this.ModalTitle="View Tasks and Skills";
+    this.name=name;
+    this.refreshPeopleSkillList(item);
+    this.refreshPeopleTasksList(item);
+    this.ModalTitle="View Tasks and Skills for "+ this.name;
     this.ActivateViewSkillsComp=true;
   }
 
@@ -65,7 +99,7 @@ export class ShowPeopleComponent implements OnInit {
   }
 
   deleteClick(item){
-    if(confirm('Are you sure you want to delete this?')){
+    if(confirm('Are you sure you want to delete ' + item.Name + '?')){
       this.service.deletePeople(item.PersonID).subscribe(data=>{
         alert(data.toString());
         this.refreshPeopleList();
@@ -73,17 +107,20 @@ export class ShowPeopleComponent implements OnInit {
     }
   }
 
-refreshSkillList(item){
-  this.service.getPeopleSkillsList(item).subscribe(data=>{
-    this.SkillList=data;
-  });
-}
+  refreshPeopleSkillList(item){
+    this.service.getPeopleSkillsList(item).subscribe(data=>{
+      this.SkillList=data;
+    });
+    this.selectedSkill=["ignore"];
+  }
 
-refreshTaskList(item){
-  this.service.getTaskSkillsList(item).subscribe(data=>{
-    this.TaskList=data;
-  });
-}
+  refreshPeopleTasksList(item){
+    this.service.getPeopleTasksList(item).subscribe(data=>{
+      this.TaskList=data;
+    });
+    this.selectedTask=["ignore"];
+  }
+
 
   refreshPeopleList(){
     this.service.getPeopleList().subscribe(data=>{
@@ -92,12 +129,22 @@ refreshTaskList(item){
     });
   }
 
+  refreshSkillList(){
+    this.service.getSkillsList().subscribe(data=>{
+      this.SkillDropList=data;
+    });
+  }
+  
+  refreshTaskList(){
+    this.service.getTasksList().subscribe(data=>{
+      this.TaskDropList=data;
+    });
+  }
+
   FilterFn(){
     var PersonIDFilter = this.PersonIDFilter;
     var NameFilter = this.NameFilter;
     var BirthdayFilter = this.BirthdayFilter;
-    var SkillFilter = this.SkillFilter;
-    var TaskFilter = this.TaskFilter;
 
     this.PeopleList = this.PeopleListWithoutFilter.filter(function (el){
       return el.PersonID.toString().toLowerCase().includes(
@@ -108,12 +155,6 @@ refreshTaskList(item){
       )&&
       el.Birthday.toString().toLowerCase().includes(
         BirthdayFilter.toString().trim().toLowerCase()
-      )&&
-      el.Skill.toString().toLowerCase().includes(
-        SkillFilter.toString().trim().toLowerCase()
-      )&&
-      el.Task.toString().toLowerCase().includes(
-        TaskFilter.toString().trim().toLowerCase()
       )
     });
   }
