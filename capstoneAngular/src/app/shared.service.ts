@@ -119,4 +119,9 @@ export class SharedService {
   deletePeopleSkillsList(val:any){
     return this.http.delete(this.APIUrl+'/PeopleSkills/'+ val);
   }
+
+  //this method sends an HTTP GET request to the SkillsDropController in the API with a PersonID and returns a list of skills that person does not already have
+  getSkillsDropList(val:any){
+    return this.http.get(this.APIUrl + '/SkillsDrop/' + val);
+  }
 }

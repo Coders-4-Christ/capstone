@@ -9,8 +9,10 @@ import { SharedService } from 'src/app/shared.service';
 })
 export class AddEditPeopleComponent implements OnInit {
 
+  //constructor initializes service object so the methods can be used
   constructor(private service:SharedService) { }
 
+  //creates generic models and generic strings to be passed through the methods
   @Input() people:any;
   PersonID:string;
   Name:string;
@@ -18,6 +20,7 @@ export class AddEditPeopleComponent implements OnInit {
   Skill:string;
   Task:string;
 
+  //creates initial person object
   ngOnInit(): void {
     this.PersonID=this.people.PersonID;
     this.Name=this.people.Name;
@@ -26,6 +29,8 @@ export class AddEditPeopleComponent implements OnInit {
     this.Task=this.people.Task;
   }
 
+  //gathers data from the form, sets the val variable to that, and sends it to the API
+  //where it gets processed, returning whether or not it was successful
   addPeople(){
     var val = {PersonID:this.PersonID,
                 Name:this.Name,
@@ -35,6 +40,8 @@ export class AddEditPeopleComponent implements OnInit {
     });
   }
 
+  //gathers data from the form, sets the val variable to that, and sends it to the API
+  //where it gets processed, returning whether or not it was successful
   updatePeople(){
     var val = {PersonID:this.PersonID,
       Name:this.Name,
