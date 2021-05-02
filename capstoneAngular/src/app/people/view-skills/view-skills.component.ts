@@ -34,12 +34,19 @@ export class ViewSkillsComponent implements OnInit {
 
   //refreshes the list of skills associated with the selected person
   refreshPeopleSkillList(item){
-    this.service.getSkillsDropList(item).subscribe(data=>{
+    this.service.getPeopleSkillsList(item).subscribe(data=>{
       this.SkillList=data;
     });
     //sets the selected skill in the dropdown to blank
     this.selectedSkill=["ignore"]
   }
+
+    //refreshes the skill list in the dropdown menu depending on what skills the person already has
+    refreshSkillList(item){
+      this.service.getSkillsDropList(item).subscribe(data=>{
+        this.SkillDropList=data;
+      });
+    }
 
 //sets the generic models above to the data passed to the function, 
 //confirms to delete, and sends the PersonSkill ID to the API to get handeled
@@ -51,6 +58,7 @@ export class ViewSkillsComponent implements OnInit {
       this.service.deletePeopleSkillsList(item).subscribe(data=>{
         alert(data.toString());
         this.refreshPeopleSkillList(this.ThePersonID);
+        this.refreshSkillList(this.ThePersonID);
       });
     }
   }
