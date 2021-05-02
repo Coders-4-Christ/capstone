@@ -1,9 +1,9 @@
-<!-- Button trigger modal -->
+<!-- This button triggers a modal window as well as the addClick function that generates an empty user object -->
 <button type="button" class="btn btn-primary float-right m-2" data-toggle="modal" data-target="#exampleModal" (click)="addClick()" data-backdrop="static" data-keyboard="false">
     Add User
   </button>
 
-<!-- Modal -->
+<!-- Modal Window Code-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
@@ -27,9 +27,12 @@
         <tr>
             <th>
                 <div class="d-flex flex-row">
+                    <!--Text box used for the filtering the UserID [(ngModel)] binds the entered text to the UserIDFilter object. Function gets called whenever something is entered into the text box-->
                     <input [(ngModel)]="UserIDFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
+                    <!--Buttons used for sorting the UserID. One for Ascending and one for Descending-->
                     <button type="button" class="btn btn-light" (click)="sortResult('UserID',true)">
+                      <!--This is bootstrap preset code for the icon shown. This and other icons can be found at https://icons.getbootstrap.com/-->
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
                       </svg>
@@ -44,9 +47,12 @@
                 UserID</th>
             <th>
                 <div class="d-flex flex-row">
+                    <!--Text box used for the filtering the FirstName [(ngModel)] binds the entered text to the FirstNameFilter object. Function gets called whenever something is entered into the text box-->
                     <input [(ngModel)]="FirstNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
+                    <!--Buttons used for sorting the FirstName. One for Ascending and one for Descending-->
                     <button type="button" class="btn btn-light" (click)="sortResult('FirstName',true)">
+                      <!--This is bootstrap preset code for the icon shown. This and other icons can be found at https://icons.getbootstrap.com/-->
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
                       </svg>
@@ -61,9 +67,11 @@
                 FirstName</th>
             <th>
                 <div class="d-flex flex-row">
+                    <!--Text box used for the filtering the LastName [(ngModel)] binds the entered text to the LastNameFilter object. Function gets called whenever something is entered into the text box-->
                     <input [(ngModel)]="LastNameFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
-
+                    <!--Buttons used for sorting the LastName. One for Ascending and one for Descending-->
                     <button type="button" class="btn btn-light" (click)="sortResult('LastName',true)">
+                      <!--This is bootstrap preset code for the icon shown. This and other icons can be found at https://icons.getbootstrap.com/-->
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z"/>
                       </svg>
@@ -80,17 +88,22 @@
         </tr>
     </thead>
     <tbody>
+        <!--This is the for loop that loops through the data in UserList-->
         <tr *ngFor="let dataItem of UserList">
+            <!--These are elements from that for loop printed out in table format-->
             <td>{{dataItem.UserID}}</td>
             <td>{{dataItem.FirstName}}</td>
             <td>{{dataItem.LastName}}</td>
             <td>
+                <!--This is the button that activates the editClick function with the item from that row passed to it. This activates the modal pop up window at the top of this code-->
                 <button type="button" class="btn btn-light mr-1" data-toggle="modal" data-target="#exampleModal" (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
+                    <!--This is bootstrap preset code for the icon shown. This and other icons can be found at https://icons.getbootstrap.com/-->
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                       </svg>
                 </button>
+                <!--This is the button that activates the deleteClick function with the userID from that row passed through it. This sends the request directly to the API and deletes the current User row in the table-->
                 <button type="button" class="btn btn-light mr-1" (click)="deleteClick(dataItem)">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>

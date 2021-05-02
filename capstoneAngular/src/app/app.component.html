@@ -1,7 +1,10 @@
+<!--HTML For the Program's langing page. This include sthe side navigation bar with links to each component-->
+
 <div class="bg-darkgrey d-flex" id="wrapper">
     <div class="bg-darkgray border-right text-white" id="sidebar-wrapper">
         <div class="sidebar-heading">Christian Aid Management Portal </div>
         <div class="list-group list-group-flush bg-darkgray">
+            <!--routerLink="{link}" represents the page that each button in the nav bar will take you to. Uses the same names as the ones in the app-routing module-->
             <button routerLink="people" class="list-group-item list-group-item-action bg-darkblue">People</button>
             <button routerLink="tasks" class="list-group-item list-group-item-action bg-darkblue">Tasks</button>
             <button routerLink="skills" class="list-group-item list-group-item-action bg-darkblue">Skills</button>
@@ -11,6 +14,7 @@
     </div>
     <div id="page-content-wrapper">
         <div class="container-fluid">
+            <!--<router-outlet> is the HTML Tag that displays the contents of each page that is routed to this main page-->
             <router-outlet></router-outlet>
         </div>
     </div>

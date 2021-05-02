@@ -11,7 +11,7 @@ export class AddEditUsersComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
-  /**creates user object*/
+//Instantiates generic user object as well as the required generic fields to be passed along
   @Input() user:any;
   UserID:string;
   FirstName:string;
@@ -27,7 +27,7 @@ export class AddEditUsersComponent implements OnInit {
     this.UserName=this.user.UserName;
     this.Passphrase=this.user.Passphrase;
   }
-  /**adds user*/
+  // gathers data to send through the addUsers service function and sends it to the API to be handled, giving the alert for whether or not it succeeded
   addUsers(){
     var val = {UserID:this.UserID,
                 FirstName:this.FirstName,
@@ -38,7 +38,8 @@ export class AddEditUsersComponent implements OnInit {
       alert(res.toString());
     });
   }
-  /**updates user*/
+ 
+  //gathers data from the update button to be sent through the updateUsers service function to the API where it gets handled, giving the alert for whether or not it succeeded
   updateUsers(){
     var val = {UserID:this.UserID,
       FirstName:this.FirstName,
