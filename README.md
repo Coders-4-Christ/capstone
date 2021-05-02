@@ -24,7 +24,7 @@
   - Navigate to the "appsettings.json" file
   - Where it says Data Source=".;" change the "." to the connection you used to connect to the database in SSMS.
   - Save the project.
-  - open command line and navigate to the project folder (EX: cd C:\\Users\{Username}\Documents\GitHub\capstone\CapstoneAPI2\CapstoneAPI2).
+  - open command line and navigate to the project folder (EX: cd C:\Users\\{Username}\Documents\GitHub\capstone\CapstoneAPI2\CapstoneAPI2).
   - next in command prompt/terminal type "dotnet run" to start the API.
   - Alternatively, click the run button inside Visual Studio 2019 to run the project.
   - A new tab will appear in your default browser, but this can be ignored.
